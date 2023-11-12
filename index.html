@@ -1,62 +1,40 @@
+
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title></title>
-	</head>
-	<body>
-		<div>
-			<span>用户名:</span>
-			<input type="text" placeholder="请输入用户名..." id="username">
-			<span>密码:</span>
-			<input type="password" placeholder="请输入用户名..." id="passwd">
-			<input type="button" value="登录" onclick="login()">
-			<input type="button" id="btnClear" value="清除" onclick="doClear()" />
-		</div>
-		<script type="text/javascript">
-			let accountAll = [{ // 存储账户json数据的数组
-					username: admin,
-					passwd: 'wpcnb'
-				},
-				{
-					username: 1234,
-					passwd: '5678'
-				},
-				{
-					username: wyl,
-					passwd: 'ssb'
-				}
-			]
-			function login() { //登陆判断
-				let username = document.getElementById('username').value;
-				let passwd = document.getElementById('passwd').value;
-				let account = accountAll.filter(function(e) {
-					return e.username == username
-				})[0]; // 筛选账号返回数组，不存在则返回空数组
-				if (!account) {
-					alert('账户不存在');
-				} else {
-					if (account.username == username && account.passwd == passwd) {
-						alert('登陆成功');
-					} else {
-						alert('密码错误');
-					}
-				}
-			}
-			function doClear() { //获取页面所有的input框，是text和password框，内容=空串
-				let inputs = document.getElementsByTagName("input");
-				for (let i = 0; i < inputs.length; i++) {
-					if (inputs[i].type == 'text' || inputs[i].type == 'password') {
-						inputs[i].value = '';
-					}
-				}
-			}
-			//给清除按钮增加onclick事件
-			let btnClear = document.getElementById('btnClear');
-			btnClear.addEventListener('click', function() {
-				doClear();
-			});
-		</script>
-	</body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wpc登陆页面</title>
+    <link rel="stylesheet" href="登录.css">
+</head>
+<body>
+    <div class="登陆才是本体">
+        <h1>Login</h1>
+        <form action="index1.html"> 
+            <!-- <label for="username">用户名</label> -->
+            <input type="text" id="uname" value="" placeholder="用户名"/><br>
+            <input type="password" id="pwd" value="" placeholder="密码"/><br>
+            <input type="submit" id="but" value="登录" onclick="return checkuser()"/> 
+            <!-- 返回了true就会打开页面  -->
+        </form> 
+    </div>
+</body> 
+ 
+<script type="text/javascript"> 
+    function getValue(id) { 
+        return document.getElementById(id).value; 
+        // 查找元素
+    } 
+    function checkuser() { 
+        if(getValue('uname') == "admin" && getValue('pwd') == "wpcnb") or if(getValue('uname') == "wylssb" && getValue('pwd') == "5418") { 
+            return true; 
+        }else { 
+            alert("登录名或密码错误！")
+            // 警告框
+            return false; 
+        } 
+    }
+    
+</script> 
 </html>
