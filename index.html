@@ -1,8 +1,38 @@
-<!DOCTYPE html>
-<html>
-<meta name="keywords" content="王芃程, 小学, 代码, 黑客,你干嘛">
-    <head>
-        <meta name="author" content="Runoob">
-        <meta charset="UTF-8">
-        <title>wpc的个人网站</title>
-    </head>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>登录界面</title>
+<link rel="stylesheet" href="登录界面.css">
+</head>
+<body>
+<div class="login">
+<h1>Welcome</h1>
+<div class="text">
+<i class="fa fa-user-o" aria-hidden="true"></i><!-- Font Awesome -->
+<input type="text" placeholder="Username" id="name">
+</div>
+<div class="text">
+<i class="fa fa-lock" aria-hidden="true"></i><!-- Font Awesome -->
+<input type="password" placeholder="Password" id="pass">
+</div>
+<button οnclick="login()">登录</button>
+</div>
+<script type="text/javascript">
+function login(){
+var username = document.getElementById("name").value;
+var password = document.getElementById("pass").value;
+if(username=="123456" && password=="123456"){
+alert("登录成功");
+window.location = "index.html";【注意，这里必须是html.index结尾，这里当时在测试的时候手机端跳转不过去链接好处时间】
+return false;
+}
+else{
+alert("账号或密码错误");
+window.location.href= "登录界面.html";
+return false;
+}
+}
+</script>
+
+</body>
+</html>
