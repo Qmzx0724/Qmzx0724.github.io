@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wpc登陆页面</title>
+    <html>
+        <style type="text/css">
+            body{
+                background: url("hack.jpg") no-repeat center center fixed;
+                        /*兼容浏览器版本*/
+                        -webkit-background-size: cover;
+                        -o-background-size: cover;                
+                        background-size: cover;
+            }
+           
+           </style>
+<audio autoplay="autoplay" loop="loop" controls="controls">
+    <source src="1234.mp3"
+        type="audio/mpeg">
+</audio>
+</html>
+    <link rel="stylesheet" href="登录.css">
+    
+</head>
+<body>
+    <meta content="text/html" charset="UTF-8">
+  <p>音乐^</p>  
+    <div class="text/css">
+        
+        <style>
+            h1 {
+              font-size: 5em; /* 50px/16=2.5em */
+            }
+            
+            h2 {
+              font-size: 1.875em; /* 40px/16=1.875em */
+             }
+            
+            p {
+              font-size: 0.875em; /* 24px/16=0.875em */
+            }
+        </style>
+        <form action="index1.html"> 
+        <div style="text-align:center;"><h1>登陆才是本体</h1></div>
+            <!-- <label for="username">用户名</label> -->
+            <p><div style="text-align:center;vertical-align:middel;"><input type="text" id="uname" style="background-color:transparent;border:0;border-radius:9px;height: 50px;width:300px;" value="" placeholder="用户名"/><br></div></p>
+            <p></p>
+            <p><div style="text-align:center;vertical-align:middel;"><input type="password" id="pwd" style="background-color:transparent;border:0;border-radius:10px;height: 50px;width:300px;"value="" placeholder="密码"/><br></div></p>
+            <p></p>    
+            <div style="text-align:center;vertical-align:middel;"><input type="submit" id="but" value="登录" onclick="return checkuser()"/> </div>
+            <!-- 返回了true就会打开页面  -->
+        </form> 
+    </div>
+</body> 
+ 
+<script type="text/javascript"> 
+    function getValue(id) { 
+        return document.getElementById(id).value; 
+        // 查找元素
+    } 
+    function checkuser() { 
+        if(getValue('uname') == "admin" && getValue('pwd') == "wpcnb")  {
+            return true; 
+        }else { 
+            alert("登录名或密码错误！")
+            // 警告框
+            return false; 
+        } 
+    }
+    
+    
+</script> 
+
+
+</html>
