@@ -18,6 +18,14 @@
 </head>
 
 <body>
+    <script>
+        var curShow=setTimeout("showIt()",0);
+        function ref_me_one()
+        {
+        document.reload();
+        clearTimeout(curShow);
+        }
+        </script>
     <span class="mobile btn-mobile-menu">
         <i class="social iconfont icon-list btn-mobile-menu__icon"></i>
         <i class="social iconfont icon-angleup btn-mobile-close__icon hidden"></i>
