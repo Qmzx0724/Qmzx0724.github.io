@@ -1,0 +1,66 @@
+<div id="chat-output"></div>
+
+<!-- 加载指示器的容器 -->
+<div id="loading-indicator" style="display: none; text-align: center; margin-top: 20px;">加载中...</div>
+
+<form id="chat-form">
+    <input type="text" id="user-input" placeholder="Ask me anything..." autocomplete="off">
+    <button type="submit">Send</button>
+</form>
+<script>
+    // 当提交chat-form表单时，触发以下功能
+    document.getElementById('chat-form').onsubmit = function(event) {
+        // 防止表单的默认提交行为
+        event.preventDefault();
+    
+        // 获取用户的输入值
+        var userInput = document.getElementById('user-input').value;
+        // 清空输入框，为下一条消息做准备
+        document.getElementById('user-input').value = '';
+    
+        // 显示加载指示器，向用户反馈正在处理中
+        document.getElementById('loading-indicator').style.display = 'block';
+        
+        // 发送请求到服务器的PHP脚本处理用户输入
+        fetch("path/to/your/script.php", { 
+            method: 'POST', // 使用POST方法
+            headers: {
+                "Content-Type": "application/json" // 设置内容类型为JSON
+            },
+            body: JSON.stringify({ // 将用户输入转换为JSON格式
+                userInput: userInput
+            })
+        })
+        .then(response => {
+            // 检查响应是否成功
+            if (!response.ok) {
+                // 如果不成功，抛出错误
+                throw new Error('Network response was not ok');
+            }
+            // 将响应数据转换为JSON
+            return response.json();
+        })
+        .then(data => {
+            // 隐藏加载指示器，因为数据已经接收
+            document.getElementById('loading-indicator').style.display = 'none';
+            
+            // 打印接收到的数据到控制台（调试用）
+            console.log('Received data:', data);
+            // 获取聊天输出元素
+            var chatOutput = document.getElementById('chat-output');
+            // 向聊天输出中添加用户的消息
+            chatOutput.innerHTML += '<div>User: ' + userInput + '</div>';
+            // 向聊天输出中添加服务器响应的消息
+            chatOutput.innerHTML += '<div>狗屁通: ' + data.choices[0].message.content + '</div>';
+        })
+        .catch(error => {
+            // 如果在请求或处理中出现错误，将错误打印到控制台
+            console.error('Error:', error);
+            // 将错误信息显示在聊天输出中
+            var chatOutput = document.getElementById('chat-output');
+            chatOutput.innerHTML += '<div>Error: 无法连接到服务器。请稍后再试。</div>';
+            // 隐藏加载指示器
+            document.getElementById('loading-indicator').style.display = 'none';
+        });
+    };
+    </script>
